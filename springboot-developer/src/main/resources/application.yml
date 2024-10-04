@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    # 전송 쿼리 확인
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+    # 테이블 생성 후에 data.sql 실행
+    defer-datasource-initialization: true
+
+# yaml 은 들여쓰기를 사용해 계층구조를 나타낸다.
+# 따라서 들여쓰기는 일관되어야 한다.
+# 들여쓰기 레벨이 있으면 계층 구조가 바뀌어 원하는 설정이 안적용되거나, 오류가 발생할 수 있다.
+# 그러므로 들여쓰기에 유의하여 yaml 파일이 작성되어야 한다.
