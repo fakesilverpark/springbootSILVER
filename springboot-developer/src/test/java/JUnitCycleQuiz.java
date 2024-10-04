@@ -23,4 +23,13 @@ public class JUnitCycleQuiz {
     public void junitQuiz4() {
         System.out.println("this is second test");
     }
+
+    /*
+        answer:
+            Hello!
+            this is first test
+            Hello!
+            this is second test
+            Bye!
+     */
 }
