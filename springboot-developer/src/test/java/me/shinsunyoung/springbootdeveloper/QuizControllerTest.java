@@ -31,3 +31,5 @@ class QuizControllerTest {
                 .build();
     }
 }
+
+// ObjectMapper 는 Jackson 라이브러리에서 제공하는 클래스 (객체와 json 간의 변환 처리) - 객체 직렬화

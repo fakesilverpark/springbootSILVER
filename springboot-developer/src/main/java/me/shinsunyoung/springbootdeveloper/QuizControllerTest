@@ -1,0 +1,48 @@
+package me.shinsunyoung.springbootdeveloper;
+
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+public class QuizControllerTest {
+
+    private MockMvc mockMvc;
+
+    @DisplayName("quiz(): GET /quiz?code=1 이면 응답코드는 201, 응답 본문은 Created! ㄹㅣ턴")
+    @Test
+    public void getQuiz1() throws Exception{
+        // given
+        final String url = "/quiz";
+
+        // when
+        final ResultActions result = mockMvc.perform(get(url)
+                .param("code", "1")
+        );
+
+        // then
+        result
+                .andExpect(status().isCreated())
+                .andExpect(content().string("Created!"));
+    }
+
+    @DisplayName("quiz(): GET /quiz?code=2 이면 응답코드는 400, 응답 본문은 Bad Request! ㄹㅣ턴")
+    @Test
+    public void getQuiz2() throws Exception{
+        // given
+        final String url = "/quiz";
+
+        // when
+        final ResultActions result = mockMvc.perform(get(url)
+                .param("code", "2")
+        );
+
+        // then
+        result
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Bad Request!"));
+    }
+}
