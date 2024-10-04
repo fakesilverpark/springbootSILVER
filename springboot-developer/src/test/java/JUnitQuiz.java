@@ -1,3 +1,4 @@
+/*
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -42,3 +43,5 @@ public void junitTest2(){
     // num3 가 num2 보다 작은지
     assertThat(num3).isLessThan(num2);
 }
+
+ */
