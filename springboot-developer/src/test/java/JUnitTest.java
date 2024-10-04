@@ -15,6 +15,17 @@ public class JUnitTest {
 
         Assertions.assertEquals(sum, a + b); // 값이 같은지 확인
     }
+
+    @DisplayName("1 + 3 is 4")
+    @Test
+
+    public void junitFailedTest(){
+        int a = 1;
+        int b = 3;
+        int sum = 3;
+
+        Assertions.assertEquals(sum, a + b); // 실패하는 케이스
+    }
 }
 
 /*
