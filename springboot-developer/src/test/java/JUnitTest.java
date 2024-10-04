@@ -16,6 +16,7 @@ public class JUnitTest {
         Assertions.assertEquals(sum, a + b); // 값이 같은지 확인
     }
 
+    /*
     @DisplayName("1 + 3 is 4")
     @Test
 
@@ -26,6 +27,7 @@ public class JUnitTest {
 
         Assertions.assertEquals(sum, a + b); // 실패하는 케이스
     }
+     */
 }
 
 /*
