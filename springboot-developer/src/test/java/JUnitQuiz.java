@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+
 @Test
 public void junitTest1(){
     String name1 = "sally";
