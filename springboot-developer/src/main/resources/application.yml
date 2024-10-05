@@ -6,7 +6,6 @@ spring:
       hibernate:
         format_sql: true
 
-    # 테이블 생성 후에 data.sql 실행
     defer-datasource-initialization: true
 
 # yaml 은 들여쓰기를 사용해 계층구조를 나타낸다.
