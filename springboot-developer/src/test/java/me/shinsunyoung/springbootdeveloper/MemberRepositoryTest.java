@@ -85,4 +85,12 @@ class MemberRepositoryTest {
         // then
         assertThat(memberRepository.findAll().size()).isZero();
     }
+
+    /*
+        정리
+        - save() : 레코드 추가
+        - saveAll() : 한꺼번에 여러 레코드 추가
+        - deleteById() : 아이디로 레코드 삭제
+        - deleteAll() : 모든 레코드 삭제
+     */
 }
