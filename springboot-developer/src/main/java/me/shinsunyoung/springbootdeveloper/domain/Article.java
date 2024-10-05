@@ -1,8 +1,12 @@
 package me.shinsunyoung.springbootdeveloper.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+/*
 @Entity // 엔티티로 지정
 public class Article {
 
@@ -38,6 +42,7 @@ public class Article {
         return content;
     }
 }
+*/
 
 /*
     @Builder
@@ -60,3 +65,40 @@ public class Article {
             빌더 패턴을 사용하면 어느 필드에 어느 값이 매칭되는지 바로 보여서 객체 생성 코드의 가독성이 높아짐
             그리고 이 어노테이션을 사용하면 발더 패턴 사용을 위한 코드를 자동으로 생성해서 간편하게 빌더 패턴을 사용해 객체를 만들 수 있다
  */
+
+/*----------------------------------------------------------------------------*/
+
+// lombok 으로 코드 개선
+// getId() 같은 필드 값을 가져오는 메서드들을 public class Article 위에 @Getter, @NoArgsConstructor 로 대체
+
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Article {
+    @Id // id 필드 기본키로 지정
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //  기본키 자동으로 1씩 증가
+    @Column(name = "id", updatable = false)
+    private Long id;
+
+    @Column(name = "title", nullable = false) // title 이라는 not null 칼럼과 매핑
+    private String title;
+
+    @Column(name = "content", nullable = false)
+    private String content;
+
+    @Builder
+    public Article(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    /*
+        @NoArgsConstructor
+            : 어노테이션을 선언해 접근 제어자가 protected 인 기본 생성자를 별도의 코드 없이 생성
+
+        @Getter
+            : 클래스 필드에 대해 별도 코드 없이 모든 필드에 대한 접근자 메서드를 만듦
+
+        --> 이렇게 롬복 애너테이션을 사용해 코드의 반복을 줄여서 가독성이 향상되었다!!!
+     */
+}
