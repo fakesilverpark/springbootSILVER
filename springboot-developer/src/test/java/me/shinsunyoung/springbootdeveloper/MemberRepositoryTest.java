@@ -93,4 +93,31 @@ class MemberRepositoryTest {
         - deleteById() : 아이디로 레코드 삭제
         - deleteAll() : 모든 레코드 삭제
      */
+
+    // 수정 메서드 사용하기
+
+    // JPA 에서 데이터를 수정할 때는 트랜잭션 내에서 해야한다.
+    // 데이터를 수정할 때는 그냥 메서드만 사용하는 것이 아니라 @Transactional 어노테이션을 메서드에 추가해야함
+    @Sql("/insert-member.sql")
+    @Test
+    void update(){
+        // given
+        Member member = memberRepository.findById(2L).get();
+
+        // when
+        member.changeName("BC");
+
+        // then
+        assertThat(memberRepository.findById(2L).get().getName()).isEqualTo("BC");
+    }
+    /*
+        이 코드에서는 @Transactional 어노테이션을 안붙였음에도 실행이 된 이유는
+        @DataJpaTest 어노테이션을 사용해서다!
+        이 어노테이션은 테스트를 위한 설정을 제공하며, 자동으로 디비에 대한 트랜잭션 관리를 설정한다
+        이 어노테이션에 마우스 커서를 대고 있으면 팝업으로 세부 항목을 볼 수 있는데 거기에 @Transactional 이 있다
+
+        하지만 서비스 코드에서 업데이트 기능을 사용할때는 @Transactional 을 붙여야 한다.
+
+        수정 -> 조회 후 트랜잭션 범위 내에서 필드값 변경
+     */
 }
